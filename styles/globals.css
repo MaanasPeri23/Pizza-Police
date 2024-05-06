@@ -1,0 +1,154 @@
+.admin-view-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px; /* Adjust this value as needed */
+  width: 100%
+}
+
+.admin-view {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  width: 100%
+}
+  
+.report-list {
+  width: 100%;
+  max-width: 600px;
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+}
+
+.report-item {
+  padding: 20px;
+}
+
+.report-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.report-info {
+  display: flex;
+  align-items: center;
+}
+
+.report-info h3 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.report-info p {
+  margin: 0 10px;
+  font-size: 14px;
+  color: #757575;
+}
+
+.report-actions button {
+  margin-left: 10px;
+}
+
+.reply-section {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.reply-section textarea {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  margin-right: 10px;
+  resize: vertical;
+}
+
+.reply-section button {
+  background-color: #FF5B28;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.report-pizza-form {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  color: #333;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.report-pizza-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.form-group textarea {
+  height: 100px;
+  resize: vertical;
+}
+
+.submit-button {
+  background-color: #FF5B28;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: #2f6bca;
+}
+
+.clean-dropdown {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 8px;
+  font-size: 14px;
+  width: 100%;
+}
+.clean-dropdown-2 {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 8px;
+  font-size: 14px;
+  width: 25%;
+}
+
+.clean-dropdown:focus {
+  outline: none;
+  border-color: #FF5B28; /* Change the border color when focused */
+}
