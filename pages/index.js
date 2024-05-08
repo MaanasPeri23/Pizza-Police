@@ -9,7 +9,7 @@ export default function Home() {
             <div className="column">
               <p class="title" style={{ color: 'black' }}>The beginning of the pizza revolution.</p>
               <p class="subtitle" style={{ color: 'black' }}>
-                A pizza ticket management system where you can report pizza hate crimes from all over the world and we solve them. Join the community today!
+                A pizza ticket management system where you can report pizza crimes from all over the world and we solve them. Join the community today!
               </p>
               <ReportPizzaForm />
               <></>
@@ -40,7 +40,7 @@ export default function Home() {
         <section class="hero is-medium has-background-white-ter	">
           <div class="hero-body columns is-vcentered">
             <div className="column">
-              <p class="title">Abolish the tyranny that is chicago "deep dish" pizza. </p>
+              <p class="title">Abolish the tyranny that is chicago &quot;deep dish&quot; pizza.</p>
               <p>insert evil laughter here</p>
             </div>
             <div className="column">

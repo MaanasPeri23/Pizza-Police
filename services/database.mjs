@@ -6,10 +6,9 @@ export const openDb = async () => {
     tickets: []
   }
 
-  // Don't edit below this line.
   try {
 
-    const text = await fsPromises.readFile('./db.json')
+    const text = await fsPromises.readFile('/tmp/db.json')
     return JSON.parse(text)
 
   } catch (err) {
@@ -90,7 +89,6 @@ export const postComment = async (ticketID, comment) => {
   const dbObject = await openDb()
 
   const ticketToCommentOn = dbObject.tickets.find(ticket => ticket.id == ticketID)
-  console.log("here drill 1") // not reaching here
 
   if (!ticketToCommentOn) {
     throw new Error(`Ticket with ID ${ticketID} not found`)
@@ -98,21 +96,20 @@ export const postComment = async (ticketID, comment) => {
 
   //need to print this tickets to see if the comments are staying in the object, after being posted. or need to write anohter fetch? dont think so but just make sure to print every time you post a comment
   ticketToCommentOn.comments.push(comment)
-  console.log("ticket found", ticketToCommentOn) // why is this an object? 
+  // console.log("ticket found", ticketToCommentOn) // why is this an object? 
   //unable to do this;
-
-
   await saveData(dbObject)
 
 }
 
 
 const saveData = async (dbObject) => {
-  await fsPromises.writeFile('./db.json', JSON.stringify(dbObject))
+  await fsPromises.writeFile('/tmp/db.json', JSON.stringify(dbObject))
 }
+
 
 export const clear = async () => {
   try {
-    await fsPromises.rm('./db.json')
+    await fsPromises.rm('/tmp/db.json')
   } catch(err) {} // ignore error if file doesnt exist
 };

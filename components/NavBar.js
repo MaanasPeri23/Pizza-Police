@@ -22,9 +22,11 @@ const NavBar = () => {
       >
       
       <div class="navbar-brand">
-        <a class="navbar-item" href="/" style={{ color: "#000000" }}>
-          Pizza Police
-        </a>
+        <Link href="/">
+          <a className="navbar-item" style={{ color: "#000000" }}>
+            Pizza Police
+          </a>
+        </Link>
       </div>
 
       {

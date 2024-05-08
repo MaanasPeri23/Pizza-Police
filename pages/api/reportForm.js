@@ -25,7 +25,6 @@ export default async function handler(req, res) {
         }
 
         // console.log("Post Session: ", session)
-        //KEPT FORGETTING TO UPDATE NEW FIELDS HERE
         const createTicket = await db.createTicket({id: data.id, user: data.userName, date: data.date, description: data.description, location: data.location, urgencyLevel: data.urgencyLevel})
 
         return res.status(201).json(createTicket)
@@ -34,7 +33,6 @@ export default async function handler(req, res) {
         if (!session) {
             return res.status(401).json("Unauthorized")
         }
-        //what is query again? 
         //req.query is an object containing a property for each query string parameter in the route. If there is no query string, it is an empty object, {}.
         const ticketID = req.query.ticketID;
         try {
@@ -63,5 +61,4 @@ export default async function handler(req, res) {
         return res.status(200).send();
     }
 
-    //how does working with webpage filters work?
 }

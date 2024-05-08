@@ -154,7 +154,7 @@ const AdminView = () => {
   };
 
   if (!session){
-    return <div> Sorry! You're not signed in!</div>
+    return <div> Sorry! You&apos;re not signed in!</div>
   }
 
   return (

@@ -52,7 +52,7 @@ const ReportPizzaForm = () => {
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="userName">User Name (Optional):</label> 
-          {/* dont really like this way of formatting it, will fix later. */}
+          
           <input
             type="text"
             id="userName"
@@ -94,7 +94,7 @@ const ReportPizzaForm = () => {
           <select
             id="urgencyLevel"
             value={urgencyLevel}
-            className="clean-dropdown" // Add a class for styling
+            className="clean-dropdown" 
             onChange={(e) => setUrgencyLevel(e.target.value)}
           >
             <option value="">Select urgency level</option>
