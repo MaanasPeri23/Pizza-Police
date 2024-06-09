@@ -1,7 +1,3 @@
-
-
-
-
 **Overview:**
 Pizza Police is a revolutionary ticket management system designed to tackle pizza-related crimes reported by pizza enthusiasts worldwide. Users can submit reports on various pizza mishaps, ranging from missing toppings to pineapple infiltrations. Admins can efficiently manage these reports, resolve issues, and engage with users through comments. This system aims to maintain pizza purity and uphold the integrity of this beloved dish.
 
@@ -24,8 +20,6 @@ Pizza Police is a revolutionary ticket management system designed to tackle pizz
 * **Home Page:** Users can access the reporting form to submit pizza crime reports.
 * **Admin Dashboard:** Admins can view, manage, and resolve reported incidents, assign urgency levels, and engage with users through comments.
 
-
-
 How to run this project:
 
 First run the development server:
@@ -36,8 +30,7 @@ npm install
 npm run dev
 ```
 
-and open up [http://localhost:3000/](http://localhost:3000/) to see the result of the pages. 
-
+and open up [http://localhost:3000/](http://localhost:3000/) to see the result of the pages.
 
 **Purpose of each file in this project:**
 
@@ -60,9 +53,9 @@ and open up [http://localhost:3000/](http://localhost:3000/) to see the result o
    * **Functionalities:**
      * Implements a form with input fields for users to provide details such as their name, date of incident, location, description, and urgency level.
      * Handles form submission by sending a POST request to the server-side API (`/api/reportForm`) to create a new ticket.
-4. **AdminView (in home.js):**
+4. **individualReport.js:**
 
-   * **Purpose:** This file contains the components and layout for the admin dashboard, where administrators can manage reported pizza incidents.
+   * **Purpose:** This file contains the components and layout for the admin dashboard (AdminView), where administrators can manage reported pizza incidents.
    * **Functionalities:**
      * Fetches a list of reported incidents from the server-side API (`/api/reportForm`) and displays them in a list format.
      * Allows administrators to resolve reported incidents by sending DELETE requests to the server-side API.
@@ -85,14 +78,17 @@ and open up [http://localhost:3000/](http://localhost:3000/) to see the result o
      * I chose to work with a local db.json object because:
        * Working with local files is often simpler and faster than interacting with a cloud-based database like Firestore. There is no network latency involved, and data operations are typically faster since they are performed locally.
        * Cost Considerations: If you're concerned about costs, using local files can be more cost-effective, especially for smaller projects or during development and testing phases. Firestore, being a cloud-based service, may incur ongoing costs based on usage and storage.
-
-
+7. successMessage.js: Renders a success message component when a form is submitted successfully, utilized in home.js
 
 ## Areas for Improvement:
 
-#### User Interface (UI)
+#### Database operations
 
-* Enhance the UI design to improve user experience and visual appeal.
+Although I'm more familiar with Firebase, I felt that some of the operations used to retriever, update, or append entries weren't that similar to each other, which forced me to use inefficient methods (for the time being) to make my APIs work. For example, in my 'editComment' function in database.mjs (line 126), I'm trying to update the comment in case if an admin wants to change relevant information or fix mistakes. Initially I had attempted to embed sql in my functions, but it wasn't consistent with the documentation and wasn't sure if supabase had depracated some of the embedded sql functions. 
+
+Instead, I chose to fetch and temporarily store all the comments for that specific ticketID, filtered out for the correct commentID that needs to be edited, and then updated the comment along with it's updated timestamp and the user who is editing the comments (every admin can edit any comment even if they didn't write it) within the stored array of comment objects. I then updated the entire comments column for that specific ticketID. This is an expensive read and write operation, as supposed to querying the list of columns and updating a single comment object. 
+
+In the future I plan on creating my own sql functions in the SQL Editor in Supabase, and calling them in my database file to avoid redundant read/write operations.
 
 #### Project Planning in Sprints
 
@@ -100,7 +96,7 @@ Working on asking more relevant questions to the team. After I built this app I 
 
 #### Abstraction
 
-A lot of the types of requests I had to build out were very simialr in nature, and I would like to explore the opportunity to abstract these requests so that it can be accessible to multiple features. 
+A lot of the types of requests I had to build out were very simialr in nature, and I would like to explore the opportunity to abstract these requests so that it can be accessible to multiple features.
 
 #### **Leveraging NextJS Tools**
 
