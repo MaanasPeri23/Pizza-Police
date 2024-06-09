@@ -1,9 +1,10 @@
+/* General Styles */
 .admin-view-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 40px; /* Adjust this value as needed */
-  width: 100%
+  margin-top: 40px;
+  width: 100%;
 }
 
 .admin-view {
@@ -11,19 +12,133 @@
   justify-content: center;
   align-items: center;
   padding: 20px;
-  width: 100%
-}
-  
-.report-list {
   width: 100%;
-  max-width: 600px;
-  background-color: #fff;
-  border: 1px solid #e0e0e0;
-  border-radius: 4px;
-  display: flex;
-  flex-direction: column;
 }
 
+.black-text {
+  color: #000000;
+}
+
+.orange-button {
+  background-color: #FF5B28;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.orange-button:hover {
+  background-color: #e04b22;
+}
+
+/* Report List Styles (Used in AdminView.js) */
+.report-list {
+  width: 100%;
+  max-width: 1000px;
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.reports-container {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.new-reports,
+.resolved-reports {
+  width: 48%;
+}
+
+/* Report Form Styles (Used in AdminView.js) */
+.report-pizza-form {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  color: #333;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.report-pizza-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.form-group textarea {
+  height: 100px;
+  resize: vertical;
+}
+
+.submit-button {
+  background-color: #FF5B28;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: #2f6bca;
+}
+
+.clean-dropdown {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 8px;
+  font-size: 14px;
+  width: 100%;
+}
+
+.clean-dropdown-2 {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 8px;
+  font-size: 14px;
+  width: 25%;
+}
+
+.clean-dropdown:focus,
+.clean-dropdown-2:focus {
+  outline: none;
+  border-color: #FF5B28;
+}
+
+/* Individual Report Styles (Used in individualReports.js) */
 .report-item {
   padding: 20px;
 }
@@ -79,76 +194,143 @@
   cursor: pointer;
 }
 
-.report-pizza-form {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  color: #333;
-  max-width: 600px;
-  margin: 0 auto;
+.report-description {
+  border: 1px solid #d3d3d3;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  background-color: #f9f9f9;
 }
 
-.report-pizza-form h2 {
-  text-align: center;
-  margin-bottom: 20px;
+/* Comments Section Styles (Used in individualReports.js) */
+.comments-section {
+  font-family: Arial, sans-serif;
 }
 
-.form-group {
-  margin-bottom: 20px;
+.comment-list {
+  list-style: none;
+  padding: 0;
 }
 
-.form-group label {
-  display: block;
-  font-weight: bold;
+.comment-item {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #f9f9f9;
+}
+
+.comment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 5px;
 }
 
-.form-group input,
-.form-group textarea {
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 16px;
+.comment-user {
+  font-weight: bold;
 }
 
-.form-group textarea {
-  height: 100px;
-  resize: vertical;
+.comment-date {
+  color: #888;
 }
 
-.submit-button {
-  background-color: #FF5B28;
-  color: #fff;
+.comment-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.edit-button,
+.delete-button {
+  background: none;
   border: none;
-  padding: 10px 20px;
-  border-radius: 4px;
   cursor: pointer;
   font-size: 16px;
-  transition: background-color 0.3s ease;
+  color: #000000;
 }
 
-.submit-button:hover {
-  background-color: #2f6bca;
+.edit-button:hover,
+.delete-button:hover {
+  color: #000;
 }
 
-.clean-dropdown {
-  border: 1px solid #ccc;
+.comment-body {
+  margin-top: 10px;
+}
+
+.comment-body p {
+  margin: 0;
+}
+
+/* Success Message Styles (Used in AdminView.js) */
+.success-message {
+  text-align: center;
+}
+
+.success-message h2 {
+  font-weight: bold;
+}
+
+.success-message p {
+  margin-bottom: 20px;
+}
+
+.success-message .submit-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Header Styles (Used in AdminView.js) */
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-right: 30px;
+}
+
+.header-container a {
+  margin-right: 30px;
+}
+
+.resolve-button {
+  background-color: #fff;
+  color: #000000;
+  border: 2px solid #FF5B28;
+  padding: 4px 8px;
   border-radius: 4px;
-  padding: 8px;
-  font-size: 14px;
-  width: 100%;
-}
-.clean-dropdown-2 {
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  padding: 8px;
-  font-size: 14px;
-  width: 25%;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.clean-dropdown:focus {
+.resolve-button:hover {
+  background-color: #FF5B28;
+  color: #fff;
+}
+
+.tabs {
+  display: flex;
+  border-bottom: 1px solid #ddd;
+}
+
+.tab-button {
+  flex: 1;
+  padding: 15px 20px;
+  cursor: pointer;
+  border: none;
+  background-color: #f4f4f4;
+  font-size: 16px;
+  color: #666;
+  transition: background-color 0.3s ease, color 0.3s ease;
   outline: none;
-  border-color: #FF5B28; /* Change the border color when focused */
+}
+
+.tab-button:hover {
+  background-color: #e4e4e4;
+}
+
+.tab-button.active {
+  background-color: #fff;
+  color: #000;
+  border-bottom: 3px solid #FF5B28;
 }

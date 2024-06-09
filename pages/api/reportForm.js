@@ -1,6 +1,5 @@
 import {ServerSession, getServerSession} from 'next-auth/next'
 import * as db from '../../services/database.mjs'
-////
 
 export default async function handler(req, res) {
     const session = await getServerSession(req, res)
@@ -15,9 +14,10 @@ export default async function handler(req, res) {
         const tickets = await db.getTickets()
         
         // console.log("Tickets: ", tickets)
-        res.status(200).json(tickets);
-
-    } else if (req.method == "POST") {
+        return res.status(200).json(tickets);
+    } 
+    
+    if (req.method == "POST") {
         //can create ticket if your not signed in
         const data = req.body;
         if (!data.id){
@@ -25,10 +25,12 @@ export default async function handler(req, res) {
         }
 
         // console.log("Post Session: ", session)
-        const createTicket = await db.createTicket({id: data.id, user: data.userName, date: data.date, description: data.description, location: data.location, urgencyLevel: data.urgencyLevel})
+        const createTicket = await db.createTicket({id: data.id, user_name: data.userName, date: data.date, description: data.description, location: data.location, urgencyLevel: data.urgencyLevel})
 
         return res.status(201).json(createTicket)
-    } else if (req.method == "DELETE") {
+    } 
+    
+    if (req.method == "DELETE") {
 
         if (!session) {
             return res.status(401).json("Unauthorized")
@@ -36,13 +38,15 @@ export default async function handler(req, res) {
         //req.query is an object containing a property for each query string parameter in the route. If there is no query string, it is an empty object, {}.
         const ticketID = req.query.ticketID;
         try {
-            await db.deleteTicket(ticketID);
+            await db.resolveTicket(ticketID);
             
         } catch (error) {
             return res.status(404).json({message: error.message})
         }
         return res.status(200).send();
-    } else if (req.method == "PUT") {
+    } 
+    
+    if (req.method == "PUT") {
 
         //no one except admins can edit and prioritize urgencyLevel
         if (!session){
@@ -58,6 +62,22 @@ export default async function handler(req, res) {
         } catch (error) {
             return res.status(404).json({message: error.message})
         }
+        return res.status(200).send();
+    }
+
+    if (req.method == "PATCH") {
+        if (!session) {
+            return res.status(401).json("Unauthorized")
+        }
+
+        const ticketID = req.query.ticketID;
+
+        try {
+            await db.reActivateTicket(ticketID)
+        } catch (error) {
+            return res.status(404).json({message: error.message})
+        }
+
         return res.status(200).send();
     }
 

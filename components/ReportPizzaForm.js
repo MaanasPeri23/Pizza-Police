@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import SuccessMessage from './successMessage';
 
 
 const ReportPizzaForm = () => {
@@ -8,8 +9,9 @@ const ReportPizzaForm = () => {
   const [location, setLocation] = useState('');
   const [description, setDescription] = useState('');
   const [urgencyLevel, setUrgencyLevel] = useState('');
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event) => { //passing in the setIsSubmitted to true here, opposite of handleNewResponse()
     event.preventDefault();
     const id = uuidv4();
     const reportData = {
@@ -37,6 +39,8 @@ const ReportPizzaForm = () => {
         setLocation('');
         setDescription('');
         setUrgencyLevel('');
+        setIsSubmitted(true); //update submission status when this prop is passed in
+
       } else {
         console.error('Error creating ticket:', response.statusText);
       }
@@ -46,68 +50,80 @@ const ReportPizzaForm = () => {
     //why no res.send(200 status) here????
   };
 
+  const handleNewResponse = () => {
+    setIsSubmitted(false); // Reset submission status to show the form again
+  };
+
   return (
     <div className="report-pizza-form">
-      <h2>Report Form</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="userName">User Name (Optional):</label> 
-          
-          <input
-            type="text"
-            id="userName"
-            value={userName}
-            onChange={(e) => setUserName(e.target.value)}
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="date">Date of Incident:</label>
-          <input
-            type="date"
-            id="date"
-            value={date}
-            onChange={(e) => setDate(e.target.value)}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="location">Location of Problem:</label>
-          <input
-            type="text"
-            id="location"
-            value={location}
-            onChange={(e) => setLocation(e.target.value)}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="description">Description:</label>
-          <textarea
-            id="description"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="urgencyLevel">Urgency Level:</label>
-          <select
-            id="urgencyLevel"
-            value={urgencyLevel}
-            className="clean-dropdown" 
-            onChange={(e) => setUrgencyLevel(e.target.value)}
-          >
-            <option value="">Select urgency level</option>
-            <option value="Low">Low</option>
-            <option value="Medium">Medium</option>
-            <option value="High">High</option>
-          </select>
-        </div>
+      {/* isSubmitted updated through the prop functions */}
+      {isSubmitted ? (
+        <SuccessMessage onNewResponse={handleNewResponse} />
+      ) : (
+        <> 
+          <h2>Report Form</h2>
+          <form onSubmit={handleSubmit}> 
+            <div className="form-group">
+              <label htmlFor="userName">User Name (Optional):</label> 
+              
+              <input
+                type="text"
+                id="userName"
+                value={userName}
+                onChange={(e) => setUserName(e.target.value)}
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="date">Date of Incident:</label>
+              <input
+                type="date"
+                id="date"
+                value={date}
+                onChange={(e) => setDate(e.target.value)}
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="location">Location of Problem:</label>
+              <input
+                type="text"
+                id="location"
+                value={location}
+                onChange={(e) => setLocation(e.target.value)}
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="description">Description:</label>
+              <textarea
+                id="description"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="urgencyLevel">Urgency Level:</label>
+              <select
+                id="urgencyLevel"
+                value={urgencyLevel}
+                className="clean-dropdown" 
+                onChange={(e) => setUrgencyLevel(e.target.value)}
+              >
+                <option value="">Select urgency level</option>
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+              </select>
+            </div>
 
-        <button type="submit" className="submit-button">
-          Submit
-        </button>
-      </form>
+            <button type="submit" className="submit-button">
+              Submit
+            </button>
+          </form>
+        </>
+      )}
+      
     </div>
   );
 };

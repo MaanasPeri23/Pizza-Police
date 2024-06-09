@@ -15,13 +15,13 @@ const NavBar = () => {
 
   return (
     <nav
-        class="navbar"
+        className="navbar"
         role="navigation"
         aria-label="main navigation"
         style={{ backgroundColor: "#28CCFF" }}
       >
       
-      <div class="navbar-brand">
+      <div className="navbar-brand">
         <Link href="/">
           <a className="navbar-item" style={{ color: "#000000" }}>
             Pizza Police
@@ -41,12 +41,13 @@ const NavBar = () => {
       </div>
 
       { session ? 
-          <div>
-            <a style={{ color: "#000000" }}>{`Signed in as Professor ${session.user.name}`}</a>
-            <button className="button is-primary" onClick={handleSignOut}>Sign out</button>
-          </div> : 
-          <div>
-              <button className="button is-primary" onClick={() => signIn()}>Sign In</button>
+          <div className="header-container">
+            <a className="black-text">{`Signed in as ${session.user.name}`}</a>
+            <button className="orange-button" onClick={handleSignOut}>Sign out</button>
+          </div>
+         : 
+          <div className="header-container">
+              <button className="orange-button" onClick={() => signIn()}>Sign In</button>
           </div>
       }
     </nav>
