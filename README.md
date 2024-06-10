@@ -72,12 +72,10 @@ and open up [http://localhost:3000/](http://localhost:3000/) to see the result o
 
    * **Purpose:** This file contains functions and utilities for interacting with the database to manage pizza-related incidents.
    * **Functionalities:**
-     * Defines functions for opening, reading, and saving data to the database file (`db.json`).
+     * Defines functions for opening, reading, and saving data to the database (Supabase).
      * Provides functions for CRUD operations (Create, Read, Update, Delete) on pizza incident records stored in the database.
      * Implements functions for creating, updating, deleting, and fetching pizza incident records.
-     * I chose to work with a local db.json object because:
-       * Working with local files is often simpler and faster than interacting with a cloud-based database like Firestore. There is no network latency involved, and data operations are typically faster since they are performed locally.
-       * Cost Considerations: If you're concerned about costs, using local files can be more cost-effective, especially for smaller projects or during development and testing phases. Firestore, being a cloud-based service, may incur ongoing costs based on usage and storage.
+     * I used Supabase because it offers the power and scalability of PostgreSQL with an easy-to-use  real-time interface, and allows me to write my own custom SQL functions to optimize read/write operations.
 7. successMessage.js: Renders a success message component when a form is submitted successfully, utilized in home.js
 
 ## Areas for Improvement:
